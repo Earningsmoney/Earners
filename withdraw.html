@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw - Earning Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Withdraw Funds</h1>
+    </header>
+    <form action="withdraw.php" method="POST">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        
+        <label for="method">Withdrawal Method:</label>
+        <select id="method" name="method">
+            <option value="bkash">Bkash</option>
+            <option value="nagad">Nagad</option>
+            <option value="bank">Bank Transfer</option>
+        </select>
+        
+        <button type="submit">Withdraw</button>
+    </form>
+</body>
+</html>
