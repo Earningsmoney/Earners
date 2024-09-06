@@ -3,24 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Earning Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Facebook Style Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            width: 360px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-container img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"], 
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #166fe5;
+        }
+
+        .login-container a {
+            display: block;
+            margin: 15px 0;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-container .meta-logo {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #606770;
+        }
+
+        .login-container .meta-logo img {
+            width: 20px;
+            vertical-align: middle;
+        }
+
+        .create-account {
+            border: 1px solid #42b72a;
+            background-color: #42b72a;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Dashboard</h1>
-        <nav>
-            <ul>
-                <li><a href="deposit.html">Deposit</a></li>
-                <li><a href="withdraw.html">Withdraw</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <h2>Welcome, [Username]</h2>
-        <p>Your current balance is: $[Balance]</p>
-    </section>
+
+    <div class="login-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+        <input type="text" placeholder="Mobile number or email address">
+        <input type="password" placeholder="Password">
+        <button>Log In</button>
+        <a href="#">Forgotten Password?</a>
+        <a href="#" class="create-account">Create new account</a>
+        <div class="meta-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Meta_Platforms_Inc._logo.svg" alt="Meta Logo"> Meta
+        </div>
+    </div>
+
 </body>
 </html>

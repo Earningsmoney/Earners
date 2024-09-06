@@ -5,23 +5,193 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Withdraw - Earning Website</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            background-color: #007bff;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        nav ul li {
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .menu-icon:hover + nav ul, nav ul:hover {
+            display: block;
+        }
+
+        .withdraw-section {
+            padding: 20px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .withdraw-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .withdraw-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .withdraw-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .withdraw-form input, .withdraw-form select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .withdraw-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .withdraw-form button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                font-size: 25px;
+            }
+
+            .withdraw-section {
+                padding: 15px;
+                margin: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Header Section -->
     <header>
-        <h1>Withdraw Funds</h1>
+        <span class="menu-icon">&#9776;</span> <!-- Three hyphen (hamburger menu) -->
+        <h1>Withdraw</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="earn.html">Earn</a></li>
+                <li><a href="deposit.html">Deposit</a></li>
+                <li><a href="withdraw.html">Withdraw</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
     </header>
-    <form action="withdraw.php" method="POST">
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" required>
-        
-        <label for="method">Withdrawal Method:</label>
-        <select id="method" name="method">
-            <option value="bkash">Bkash</option>
-            <option value="nagad">Nagad</option>
-            <option value="bank">Bank Transfer</option>
-        </select>
-        
-        <button type="submit">Withdraw</button>
-    </form>
+
+    <!-- Withdraw Section -->
+    <section class="withdraw-section">
+        <h2>Withdraw Funds</h2>
+        <form class="withdraw-form">
+            <label for="amount">Amount (৳):</label>
+            <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+
+            <label for="withdraw-method">Select Withdrawal Method:</label>
+            <select id="withdraw-method" name="withdraw-method" required>
+                <option value="" disabled selected>Select a method</option>
+                <option value="Mobile Recharge">Mobile Recharge</option>
+                <option value="Bkash">Bkash</option>
+                <option value="Nagad">Nagad</option>
+                <option value="Rocket">Rocket</option>
+            </select>
+
+            <div id="mobile-recharge-options" style="display:none;">
+                <label for="mobile-number">Mobile Number:</label>
+                <input type="text" id="mobile-number" name="mobile-number" placeholder="Enter your mobile number" required>
+
+                <label for="operator">Select Operator:</label>
+                <select id="operator" name="operator" required>
+                    <option value="" disabled selected>Select your operator</option>
+                    <option value="Grameenphone">Grameenphone</option>
+                    <option value="Banglalink">Banglalink</option>
+                    <option value="Airtel">Airtel</option>
+                    <option value="Robi">Robi</option>
+                    <option value="Teletalk">Teletalk</option>
+                </select>
+            </div>
+
+            <button type="submit">Withdraw</button>
+        </form>
+    </section>
+
+    <script>
+        // JavaScript to toggle the navigation bar
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+            }
+        });
+
+        // JavaScript to show/hide mobile recharge options
+        document.getElementById('withdraw-method').addEventListener('change', function() {
+            const selectedMethod = this.value;
+            const mobileRechargeOptions = document.getElementById('mobile-recharge-options');
+            if (selectedMethod === 'Mobile Recharge') {
+                mobileRechargeOptions.style.display = 'block';
+            } else {
+                mobileRechargeOptions.style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 </html>

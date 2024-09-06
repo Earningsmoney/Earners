@@ -5,19 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Earning Website</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Login</h1>
-    </header>
-    <form action="login.php" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-wrapper">
+        <div class="login-form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <!-- Social Login Options -->
+            <div class="social-login">
+                <p>Or login with</p>
+                <button class="social-btn facebook-btn">Login with Facebook</button>
+                <button class="social-btn google-btn">Login with Google</button>
+            </div>
+
+            <p class="signup-link">Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if(email && password) {
+                document.querySelector('.login-form-container').innerHTML = '<h2>Login Successful!</h2><p>Welcome back!</p>';
+                document.querySelector('.login-wrapper').style.backgroundColor = "#28a745";
+            } else {
+                document.querySelector('.login-form-container').innerHTML = '<h2>Login Failed!</h2><p>Please fill in both fields.</p>';
+                document.querySelector('.login-wrapper').style.backgroundColor = "#dc3545";
+            }
+        });
+    </script>
 </body>
 </html>
