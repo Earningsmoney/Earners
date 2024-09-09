@@ -5,47 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Earning Website</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            background-color: #007bff;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        nav ul li {
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .menu-icon:hover + nav ul, nav ul:hover {
+            display: block;
+        }
+
+        .login-wrapper {
+            padding: 20px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .login-wrapper h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .login-form input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-login a {
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #3b5998;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .social-login a.google {
+            background-color: #db4437;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                font-size: 25px;
+            }
+
+            .login-wrapper {
+                padding: 15px;
+                margin: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="login-wrapper">
-        <div class="login-form-container">
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="login-btn">Login</button>
-            </form>
 
-            <!-- Social Login Options -->
-            <div class="social-login">
-                <p>Or login with</p>
-                <button class="social-btn facebook-btn">Login with Facebook</button>
-                <button class="social-btn google-btn">Login with Google</button>
-            </div>
+    <!-- Header Section -->
+    <header>
+        <span class="menu-icon">&#9776;</span> <!-- Three hyphen (hamburger menu) -->
+        <h1>Login</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="earn.html">Earn</a></li>
+                <li><a href="deposit.html">Deposit</a></li>
+                <li><a href="withdraw.html">Withdraw</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <p class="signup-link">Don't have an account? <a href="register.html">Register here</a></p>
+    <!-- Login Form Section -->
+    <section class="login-wrapper">
+        <h2>Login</h2>
+        <form class="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Social Login -->
+        <div class="social-login">
+            <p>Or login with</p>
+            <a href="#" class="facebook">Sign Up With Facebook</a>
+            <a href="#" class="google">Sign Up With Google</a>
         </div>
-    </div>
+    </section>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if(email && password) {
-                document.querySelector('.login-form-container').innerHTML = '<h2>Login Successful!</h2><p>Welcome back!</p>';
-                document.querySelector('.login-wrapper').style.backgroundColor = "#28a745";
+        // JavaScript to toggle the navigation bar
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
             } else {
-                document.querySelector('.login-form-container').innerHTML = '<h2>Login Failed!</h2><p>Please fill in both fields.</p>';
-                document.querySelector('.login-wrapper').style.backgroundColor = "#dc3545";
+                nav.style.display = 'block';
             }
         });
     </script>
+
 </body>
 </html>

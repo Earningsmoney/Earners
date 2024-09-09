@@ -25,20 +25,17 @@
         .header h1 {
             margin: 0;
             font-size: 20px;
-            text-align: right;
+            text-align: center; /* Center the title */
         }
 
-        /* Three Hyphen (Hamburger) Menu */
-        .menu {
-            position: absolute;
-            left: 20px;
-            top: 12px;
-        }
-
+        /* Hamburger Menu */
         .hamburger {
             display: inline-block;
             cursor: pointer;
             font-size: 24px;
+            position: absolute;
+            left: 20px;
+            top: 12px;
         }
 
         .hamburger .bar {
@@ -46,6 +43,7 @@
             width: 25px;
             background-color: white;
             margin: 5px 0;
+            transition: 0.4s;
         }
 
         /* Menu Animation */
@@ -75,7 +73,21 @@
             background-color: #ddd;
         }
 
-        .menu:hover .menu-content {
+        /* Cross icon when active */
+        .hamburger.change .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.change .bar2 {
+            opacity: 0;
+        }
+
+        .hamburger.change .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Show Menu when active */
+        .menu-content.show {
             display: block;
             opacity: 1;
         }
@@ -117,23 +129,23 @@
 
     <!-- Header with Three Hyphen (Hamburger) Menu -->
     <div class="header">
-        <div class="menu">
-            <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="menu-content">
-                <a href="index.html">Home</a>
-                <a href="earn.html">Earn</a>
-                <a href="deposit.html">Deposit</a>
-                <a href="withdraw.html">Withdraw</a>
-                <a href="profile.html">Profile</a>
-                <a href="contact.html">Contact</a>
-                <a href="about.html">About</a>
-            </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
         </div>
         <h1>Earnings Money</h1>
+        <div class="menu-content" id="menu">
+            <a href="index.html">Home</a>
+            <a href="earn.html">Earn</a>
+            <a href="deposit.html">Deposit</a>
+            <a href="withdraw.html">Withdraw</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -142,10 +154,17 @@
         <p>Sign up today and get a bonus for first-time registration!</p>
 
         <!-- Registration Offer Button -->
-        <button class="offer-btn" onclick="claimOffer()">Get ৳500 Bonus on First-Time Registration!</button>
+        <button class="offer-btn" onclick="claimOffer()">Get ৳200 Bonus on First-Time Registration!</button>
     </div>
 
     <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            var hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('show');
+            hamburger.classList.toggle('change');
+        }
+
         function claimOffer() {
             // Redirect to registration page
             window.location.href = 'register.html';

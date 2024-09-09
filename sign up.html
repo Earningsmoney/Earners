@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Earnings Money</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #007bff;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        /* Register Section Styling */
+        .register-wrapper {
+            padding: 20px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .register-wrapper h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .register-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .register-form input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .register-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .register-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Social Register Buttons */
+        .social-register {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-register a {
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #3b5998;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .social-register a.google {
+            background-color: #db4437;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                font-size: 25px;
+            }
+
+            .register-wrapper {
+                padding: 15px;
+                margin: 15px;
+            }
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: inline-block;
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+            left: 20px;
+            top: 12px;
+        }
+
+        .hamburger .bar {
+            height: 3px;
+            width: 25px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Cross icon when active */
+        .hamburger.change .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.change .bar2 {
+            opacity: 0;
+        }
+
+        .hamburger.change .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Show Menu when active */
+        .menu-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-content.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .menu-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+        }
+
+        .menu-content a:hover {
+            background-color: #ddd;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Three Hyphen (Hamburger) Menu -->
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+        </div>
+        <h1>Sign Up</h1>
+        <nav class="menu-content" id="menu">
+            <a href="index.html">Home</a>
+            <a href="earn.html">Earn</a>
+            <a href="deposit.html">Deposit</a>
+            <a href="withdraw.html">Withdraw</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <!-- Sign Up Form Section -->
+    <section class="register-wrapper">
+        <h2>Sign Up</h2>
+        <form class="register-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Social Sign Up -->
+        <div class="social-register">
+            <p>Or</p>
+            <a href="#" class="facebook">Sign Up With Facebook</a>
+            <a href="#" class="google">Sign Up With Google</a>
+        </div>
+
+        <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+    </section>
+
+    <script>
+        // JavaScript to toggle the navigation bar
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            var hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('show');
+            hamburger.classList.toggle('change');
+        }
+    </script>
+
+</body>
+</html>
